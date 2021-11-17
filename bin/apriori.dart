@@ -8,41 +8,26 @@ import 'package:apriori/src/options.dart';
 void main(List<String> arguments) {
   final int start = (Timeline.now / 1000).round();
 
-  final List<Map<String, dynamic>> rules = [];
-
-  for (final Map<String, dynamic> rule in apriori.rules) {
-    final Map<String, dynamic> currentRule = {};
-
-    rule.forEach(
-      (key, value) => currentRule[key] = value is Set ? value.toList() : value,
-    );
-
-    rules.add(currentRule);
-  }
-
-  rules.sort((a, b) => (b['lift'] as double).compareTo((a['lift'] as double)));
-
-  File(options.rulesPath).writeAsStringSync(encoder.convert(rules));
+  transformRules();
+  sortRules();
+  writeRules();
 
   final int end = (Timeline.now / 1000).round();
 
   print('Done in ${end - start}ms!');
 }
 
-final JsonEncoder encoder = const JsonEncoder.withIndent('  ');
+final List<Map<String, dynamic>> rules = [];
 
 final Options options = Options.fromDecodedJson(
-  jsonDecode(
-    File('./options.json').readAsStringSync(encoding: utf8),
-  ),
+  jsonDecode(File('./options.json').readAsStringSync()),
 );
 
-final List<List<String>> transactions = (jsonDecode(
-  File(options.transactionsPath).readAsStringSync(encoding: utf8),
-) as List)
-    .map((transaction) => (transaction as List).cast<String>())
-    .toList()
-    .cast<List<String>>();
+final List<List<String>> transactions =
+    (jsonDecode(File(options.transactionsPath).readAsStringSync()) as List)
+        .map((transaction) => (transaction as List).cast<String>())
+        .toList()
+        .cast<List<String>>();
 
 final Apriori apriori = Apriori(
   transactions: transactions,
@@ -50,3 +35,27 @@ final Apriori apriori = Apriori(
   minConfidence: options.minConfidence,
   maxAntecedentsLength: options.maxAntecedentsLength,
 );
+
+void transformRules() {
+  for (final Map<String, dynamic> rule in apriori.rules) {
+    final Map<String, dynamic> currentRule = {};
+
+    rule.forEach(
+      (key, value) {
+        currentRule[key] = value is Set ? value.toList() : value;
+      },
+    );
+
+    rules.add(currentRule);
+  }
+}
+
+void sortRules() {
+  rules.sort((a, b) => (b['lift'] as double).compareTo((a['lift'] as double)));
+}
+
+void writeRules() {
+  File(options.rulesPath).writeAsStringSync(
+    const JsonEncoder.withIndent('  ').convert(rules),
+  );
+}

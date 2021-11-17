@@ -15,22 +15,17 @@ class Apriori {
     required this.minConfidence,
     this.maxAntecedentsLength,
   }) : items = transactions.expand((transaction) => transaction).toSet() {
-    int currentItemsetsLength = 1;
+    int maxLength = 1;
 
-    for (currentItemsetsLength;
-        currentItemsetsLength <
-            (maxAntecedentsLength != null
-                ? maxAntecedentsLength! + 2
-                : items.length + 1);
-        currentItemsetsLength++) {
+    for (; _shouldKeepCalculatingItemsetsSupports(maxLength); maxLength++) {
       final Set<Set<String>> itemsets = _getItemsets(
-        items: currentItemsetsLength == 1
+        items: maxLength == 1
             ? items
             : supports.keys
-                .where((itemset) => itemset.length == currentItemsetsLength - 1)
+                .where((itemset) => itemset.length == maxLength - 1)
                 .expand((itemset) => itemset)
                 .toSet(),
-        length: currentItemsetsLength,
+        length: maxLength,
       );
 
       for (final Set<String> itemset in itemsets) {
@@ -39,16 +34,16 @@ class Apriori {
         if (support >= minSupport) supports[itemset] = support;
       }
 
-      if (!supports.keys.any(
-        (itemset) => itemset.length == currentItemsetsLength,
-      )) break;
+      final bool shouldBreak =
+          !supports.keys.any((itemset) => itemset.length == maxLength);
+
+      if (shouldBreak) break;
     }
 
-    currentItemsetsLength -= 1;
+    maxLength -= 1;
 
-    final Set<Set<String>> finalItemsets = supports.keys
-        .where((itemset) => itemset.length == currentItemsetsLength)
-        .toSet();
+    final Set<Set<String>> finalItemsets =
+        supports.keys.where((itemset) => itemset.length == maxLength).toSet();
 
     for (final Set<String> finalItemset in finalItemsets) {
       final Set<Set<String>> allAntecedents = supports.keys
@@ -113,6 +108,14 @@ class Apriori {
 
       return itemsets;
     }
+  }
+
+  bool _shouldKeepCalculatingItemsetsSupports(int maxLength) {
+    final int maxAllowed = maxAntecedentsLength != null
+        ? maxAntecedentsLength! + 2
+        : items.length + 1;
+
+    return maxLength < maxAllowed;
   }
 
   double _getSupport(Set<String> itemset) {
