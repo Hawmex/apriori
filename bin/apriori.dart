@@ -20,14 +20,17 @@ void main(List<String> arguments) {
 final List<Map<String, dynamic>> rules = [];
 
 final Options options = Options.fromDecodedJson(
-  jsonDecode(File('options.json').readAsStringSync()),
+  jsonDecode(
+    File('options.json').readAsStringSync(),
+  ),
 );
 
-final List<List<String>> transactions =
-    (jsonDecode(File(options.transactionsPath).readAsStringSync()) as List)
-        .map((transaction) => (transaction as List).cast<String>())
-        .toList()
-        .cast<List<String>>();
+final List<List<String>> transactions = (jsonDecode(
+  File(options.transactionsPath).readAsStringSync(),
+) as List)
+    .map((transaction) => (transaction as List).cast<String>())
+    .toList()
+    .cast<List<String>>();
 
 final Apriori apriori = Apriori(
   transactions: transactions,
@@ -40,11 +43,9 @@ void transformRules() {
   for (final Map<String, dynamic> rule in apriori.rules) {
     final Map<String, dynamic> currentRule = {};
 
-    rule.forEach(
-      (key, value) {
-        currentRule[key] = value is Set ? value.toList() : value;
-      },
-    );
+    rule.forEach((key, value) {
+      currentRule[key] = value is Set ? value.toList() : value;
+    });
 
     rules.add(currentRule);
   }
