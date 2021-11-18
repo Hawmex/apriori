@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:apriori/apriori.dart';
 import 'package:apriori/src/options.dart';
 
-void main(List<String> arguments) {
+void main() {
   final int start = (Timeline.now / 1000).round();
 
   transformRules();
