@@ -20,7 +20,7 @@ void main(List<String> arguments) {
 final List<Map<String, dynamic>> rules = [];
 
 final Options options = Options.fromDecodedJson(
-  jsonDecode(File('./options.json').readAsStringSync()),
+  jsonDecode(File('options.json').readAsStringSync()),
 );
 
 final List<List<String>> transactions =
