@@ -17,7 +17,7 @@ class Apriori {
   }) : items = transactions.expand((transaction) => transaction).toSet() {
     int maxLength = 1;
 
-    for (; _shouldKeepCalculatingItemsetsSupports(maxLength); maxLength++) {
+    for (; maxLength <= items.length; maxLength++) {
       final Set<Set<String>> itemsets = _getItemsets(
         items: maxLength == 1
             ? items
@@ -49,7 +49,8 @@ class Apriori {
       final Set<Set<String>> allAntecedents = supports.keys
           .where(
             (itemset) =>
-                itemset.length < finalItemset.length &&
+                itemset.length <=
+                    (maxAntecedentsLength ?? finalItemset.length - 1) &&
                 itemset.every(finalItemset.contains),
           )
           .toSet();
@@ -108,14 +109,6 @@ class Apriori {
 
       return itemsets;
     }
-  }
-
-  bool _shouldKeepCalculatingItemsetsSupports(int maxLength) {
-    final int maxAllowed = maxAntecedentsLength != null
-        ? maxAntecedentsLength! + 2
-        : items.length + 1;
-
-    return maxLength < maxAllowed;
   }
 
   double _getSupport(Set<String> itemset) {
