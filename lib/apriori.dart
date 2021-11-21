@@ -34,16 +34,20 @@ class Apriori {
         if (support >= minSupport) supports[itemset] = support;
       }
 
-      final bool shouldBreak =
-          !supports.keys.any((itemset) => itemset.length == maxLength);
+      final bool shouldBreak = !supports.keys.any(
+        (itemset) => itemset.length == maxLength,
+      );
 
       if (shouldBreak) break;
     }
 
     maxLength -= 1;
 
-    final Set<Set<String>> finalItemsets =
-        supports.keys.where((itemset) => itemset.length == maxLength).toSet();
+    final Set<Set<String>> finalItemsets = supports.keys
+        .where(
+          (itemset) => itemset.length == maxLength,
+        )
+        .toSet();
 
     for (final Set<String> finalItemset in finalItemsets) {
       final Set<Set<String>> allAntecedents = supports.keys
@@ -99,8 +103,10 @@ class Apriori {
       for (final String item in items) {
         remainedItems.remove(item);
 
-        final Set<Set<String>> smallerItemsets =
-            _getItemsets(items: remainedItems, length: length - 1);
+        final Set<Set<String>> smallerItemsets = _getItemsets(
+          items: remainedItems,
+          length: length - 1,
+        );
 
         for (final Set<String> smallerItemset in smallerItemsets) {
           itemsets.add({item, ...smallerItemset});
@@ -113,7 +119,9 @@ class Apriori {
 
   double _getSupport(Set<String> itemset) {
     final List<List<String>> transactionsContainingItemset = transactions
-        .where((transaction) => itemset.every(transaction.contains))
+        .where(
+          (transaction) => itemset.every(transaction.contains),
+        )
         .toList();
 
     return transactionsContainingItemset.length / transactions.length;

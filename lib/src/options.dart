@@ -4,6 +4,7 @@ class Options {
 
   final double minSupport;
   final double minConfidence;
+
   final int? maxAntecedentsLength;
 
   const Options({
