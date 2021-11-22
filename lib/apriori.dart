@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 class Apriori {
-  final int _start = Timeline.now;
+  final int _start = (Timeline.now / 1000).round();
 
   final List<List<String>> transactions;
   final double minSupport;
@@ -98,9 +98,8 @@ class Apriori {
 
     if (logger) {
       print('Generated valid association rules from common itemsets...');
+      print('Done in ${(Timeline.now / 1000).round() - _start}ms!');
     }
-
-    print('Done in ${(Timeline.now / 1000).round() - _start}ms!');
   }
 
   Set<Set<String>> _getItemsets({

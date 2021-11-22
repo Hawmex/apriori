@@ -1,20 +1,13 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:apriori/apriori.dart';
 import 'package:apriori/src/options.dart';
 
 void main() {
-  final int start = (Timeline.now / 1000).round();
-
   transformRules();
   sortRules();
   writeRules();
-
-  final int end = (Timeline.now / 1000).round();
-
-  print('Done in ${end - start}ms!');
 }
 
 final List<Map<String, dynamic>> rules = [];
@@ -37,6 +30,7 @@ final Apriori apriori = Apriori(
   minSupport: options.minSupport,
   minConfidence: options.minConfidence,
   maxAntecedentsLength: options.maxAntecedentsLength,
+  logger: true,
 );
 
 void transformRules() {
