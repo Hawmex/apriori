@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 class Apriori {
+  final int _start = Timeline.now;
+
   final List<List<String>> transactions;
   final double minSupport;
   final double minConfidence;
-
   final int? maxAntecedentsLength;
+  final bool logger;
 
   final Set<String> items;
   final Map<Set<String>, double> supports = {};
@@ -14,7 +18,10 @@ class Apriori {
     required this.minSupport,
     required this.minConfidence,
     this.maxAntecedentsLength,
+    this.logger = false,
   }) : items = transactions.expand((transaction) => transaction).toSet() {
+    if (logger) print('Extracted items from transactions...');
+
     int maxLength = 1;
 
     for (; maxLength <= items.length; maxLength++) {
@@ -48,6 +55,8 @@ class Apriori {
           (itemset) => itemset.length == maxLength,
         )
         .toSet();
+
+    if (logger) print('Calculated common itemsets of items...');
 
     for (final Set<String> finalItemset in finalItemsets) {
       final Set<Set<String>> allAntecedents = supports.keys
@@ -86,6 +95,12 @@ class Apriori {
         }
       }
     }
+
+    if (logger) {
+      print('Generated valid association rules from common itemsets...');
+    }
+
+    print('Done in ${(Timeline.now / 1000).round() - _start}ms!');
   }
 
   Set<Set<String>> _getItemsets({
