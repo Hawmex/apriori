@@ -20,7 +20,7 @@ class Apriori {
     this.maxAntecedentsLength,
     this.logger = false,
   }) : items = transactions.expand((transaction) => transaction).toSet() {
-    if (logger) print('Extracted items from transactions...');
+    if (logger) print('Extracted ${items.length} items.');
 
     int maxLength = 1;
 
@@ -56,7 +56,7 @@ class Apriori {
         )
         .toSet();
 
-    if (logger) print('Calculated common itemsets of items...');
+    if (logger) print('Calculated ${finalItemsets.length} common itemsets.');
 
     for (final Set<String> finalItemset in finalItemsets) {
       final Set<Set<String>> allAntecedents = supports.keys
@@ -97,7 +97,7 @@ class Apriori {
     }
 
     if (logger) {
-      print('Generated valid association rules from common itemsets...');
+      print('Generated ${rules.length} association rules.');
       print('Done in ${(Timeline.now / 1000).round() - _start}ms!');
     }
   }
