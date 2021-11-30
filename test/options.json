@@ -1,0 +1,7 @@
+{
+  "transactionsPath": "transactions.json",
+  "rulesPath": "rules.json",
+  "minSupport": 0.04,
+  "minConfidence": 0.2,
+  "maxAntecedentsLength": 2
+}
