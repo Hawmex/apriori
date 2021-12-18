@@ -14,18 +14,18 @@ class Apriori {
   final Set<Map<String, dynamic>> rules = {};
 
   Apriori({
-    required final this.transactions,
-    required final this.minSupport,
-    required final this.minConfidence,
-    final this.maxAntecedentsLength,
-    final this.logger = false,
+    required this.transactions,
+    required this.minSupport,
+    required this.minConfidence,
+    this.maxAntecedentsLength,
+    this.logger = false,
   }) : items = transactions.expand((transaction) => transaction).toSet() {
     if (logger) print('Extracted ${items.length} items.');
 
     int maxLength = 1;
 
     for (; maxLength <= items.length; maxLength++) {
-      final Set<Set<String>> itemsets = _getItemsets(
+      final itemsets = _getItemsets(
         items: maxLength == 1
             ? items
             : supports.keys
@@ -35,13 +35,13 @@ class Apriori {
         length: maxLength,
       );
 
-      for (final Set<String> itemset in itemsets) {
-        final double support = _getSupport(itemset);
+      for (final itemset in itemsets) {
+        final support = _getSupport(itemset);
 
         if (support >= minSupport) supports[itemset] = support;
       }
 
-      final bool shouldBreak = !supports.keys.any(
+      final shouldBreak = !supports.keys.any(
         (itemset) => itemset.length == maxLength,
       );
 
@@ -50,16 +50,13 @@ class Apriori {
 
     maxLength -= 1;
 
-    final Set<Set<String>> finalItemsets = supports.keys
-        .where(
-          (itemset) => itemset.length == maxLength,
-        )
-        .toSet();
+    final finalItemsets =
+        supports.keys.where((itemset) => itemset.length == maxLength).toSet();
 
     if (logger) print('Calculated ${finalItemsets.length} common itemsets.');
 
-    for (final Set<String> finalItemset in finalItemsets) {
-      final Set<Set<String>> allAntecedents = supports.keys
+    for (final finalItemset in finalItemsets) {
+      final allAntecedents = supports.keys
           .where(
             (itemset) =>
                 itemset.length <=
@@ -68,22 +65,19 @@ class Apriori {
           )
           .toSet();
 
-      for (final Set<String> antecedents in allAntecedents) {
-        final Set<String> consequents = supports.keys.singleWhere(
+      for (final antecedents in allAntecedents) {
+        final consequents = supports.keys.singleWhere(
           (itemset) =>
               itemset.length == finalItemset.length - antecedents.length &&
               finalItemset.every(itemset.union(antecedents).contains),
         );
 
-        final double confidence = _getConfidence(
+        final confidence = _getConfidence(
           finalItemset: finalItemset,
           antecedents: antecedents,
         );
 
-        final double lift = _getLift(
-          confidence: confidence,
-          consequents: consequents,
-        );
+        final lift = _getLift(confidence: confidence, consequents: consequents);
 
         if (confidence >= minConfidence && lift > 1) {
           rules.add({
@@ -103,26 +97,26 @@ class Apriori {
   }
 
   Set<Set<String>> _getItemsets({
-    required final Set<String> items,
-    required final int length,
+    required Set<String> items,
+    required int length,
   }) {
     if (items.length == length) {
       return {items};
     } else if (length == 0) {
       return {{}};
     } else {
-      final Set<String> remainedItems = {...items};
-      final Set<Set<String>> itemsets = {};
+      final remainedItems = {...items};
+      final itemsets = <Set<String>>{};
 
-      for (final String item in items) {
+      for (final item in items) {
         remainedItems.remove(item);
 
-        final Set<Set<String>> smallerItemsets = _getItemsets(
+        final smallerItemsets = _getItemsets(
           items: remainedItems,
           length: length - 1,
         );
 
-        for (final Set<String> smallerItemset in smallerItemsets) {
+        for (final smallerItemset in smallerItemsets) {
           itemsets.add({item, ...smallerItemset});
         }
       }
@@ -131,25 +125,23 @@ class Apriori {
     }
   }
 
-  double _getSupport(final Set<String> itemset) {
-    final List<List<String>> transactionsContainingItemset = transactions
-        .where(
-          (transaction) => itemset.every(transaction.contains),
-        )
+  double _getSupport(Set<String> itemset) {
+    final transactionsContainingItemset = transactions
+        .where((transaction) => itemset.every(transaction.contains))
         .toList();
 
     return transactionsContainingItemset.length / transactions.length;
   }
 
   double _getConfidence({
-    required final Set<String> finalItemset,
-    required final Set<String> antecedents,
+    required Set<String> finalItemset,
+    required Set<String> antecedents,
   }) =>
       supports[finalItemset]! / supports[antecedents]!;
 
   double _getLift({
-    required final double confidence,
-    required final Set<String> consequents,
+    required double confidence,
+    required Set<String> consequents,
   }) =>
       confidence / supports[consequents]!;
 }

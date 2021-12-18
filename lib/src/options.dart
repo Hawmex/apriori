@@ -7,14 +7,14 @@ class Options {
   final int? maxAntecedentsLength;
 
   const Options({
-    required final this.transactionsPath,
-    required final this.rulesPath,
-    required final this.minSupport,
-    required final this.minConfidence,
-    final this.maxAntecedentsLength,
+    required this.transactionsPath,
+    required this.rulesPath,
+    required this.minSupport,
+    required this.minConfidence,
+    this.maxAntecedentsLength,
   });
 
-  Options.fromDecodedJson(final Map<String, dynamic> data)
+  Options.fromDecodedJson(Map<String, dynamic> data)
       : transactionsPath = data['transactionsPath'],
         rulesPath = data['rulesPath'],
         minSupport = data['minSupport'],
