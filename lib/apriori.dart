@@ -41,9 +41,8 @@ class Apriori {
         if (support >= minSupport) supports[itemset] = support;
       }
 
-      final shouldBreak = !supports.keys.any(
-        (itemset) => itemset.length == maxLength,
-      );
+      final shouldBreak =
+          !supports.keys.any((itemset) => itemset.length == maxLength);
 
       if (shouldBreak) break;
     }
