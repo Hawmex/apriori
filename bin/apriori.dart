@@ -35,9 +35,9 @@ void main(List<String> arguments) {
   for (final rule in apriori.rules) {
     final currentRule = <String, dynamic>{};
 
-    rule.forEach((key, value) {
-      currentRule[key] = value is Set ? value.toList() : value;
-    });
+    rule.forEach(
+      (key, value) => currentRule[key] = value is Set ? value.toList() : value,
+    );
 
     rules.add(currentRule);
   }
