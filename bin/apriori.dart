@@ -7,7 +7,7 @@ import 'package:apriori/src/options.dart';
 void main(List<String> arguments) {
   const decoder = JsonEncoder.withIndent('  ');
 
-  final options = Options.fromDecodedJson(
+  final options = Options.fromJson(
     jsonDecode(
       File(arguments[0]).readAsStringSync(),
     ),
@@ -29,7 +29,7 @@ void main(List<String> arguments) {
     minSupport: options.minSupport,
     minConfidence: options.minConfidence,
     maxAntecedentsLength: options.maxAntecedentsLength,
-    logger: true,
+    log: true,
   );
 
   for (final rule in apriori.rules) {

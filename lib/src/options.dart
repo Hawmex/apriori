@@ -14,7 +14,7 @@ class Options {
     this.maxAntecedentsLength,
   });
 
-  Options.fromDecodedJson(Map<String, dynamic> data)
+  Options.fromJson(Map<String, dynamic> data)
       : transactionsPath = data['transactionsPath'],
         rulesPath = data['rulesPath'],
         minSupport = data['minSupport'],
