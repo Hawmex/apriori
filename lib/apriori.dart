@@ -19,7 +19,7 @@ class Apriori {
     required this.minConfidence,
     this.maxAntecedentsLength,
     this.log = false,
-  }) : items = transactions.expand((transaction) => transaction).toSet() {
+  }) : items = transactions.expand((final transaction) => transaction).toSet() {
     if (log) print('Extracted ${items.length} items.');
 
     int maxLength = 1;
@@ -29,8 +29,8 @@ class Apriori {
         items: maxLength == 1
             ? items
             : supports.keys
-                .where((itemset) => itemset.length == maxLength - 1)
-                .expand((itemset) => itemset)
+                .where((final itemset) => itemset.length == maxLength - 1)
+                .expand((final itemset) => itemset)
                 .toSet(),
         length: maxLength,
       );
@@ -42,22 +42,23 @@ class Apriori {
       }
 
       final shouldBreak =
-          !supports.keys.any((itemset) => itemset.length == maxLength);
+          !supports.keys.any((final itemset) => itemset.length == maxLength);
 
       if (shouldBreak) break;
     }
 
     maxLength -= 1;
 
-    final finalItemsets =
-        supports.keys.where((itemset) => itemset.length == maxLength).toSet();
+    final finalItemsets = supports.keys
+        .where((final itemset) => itemset.length == maxLength)
+        .toSet();
 
     if (log) print('Calculated ${finalItemsets.length} common itemsets.');
 
     for (final finalItemset in finalItemsets) {
       final allAntecedents = supports.keys
           .where(
-            (itemset) =>
+            (final itemset) =>
                 itemset.length <=
                     (maxAntecedentsLength ?? finalItemset.length - 1) &&
                 itemset.every(finalItemset.contains),
@@ -66,7 +67,7 @@ class Apriori {
 
       for (final antecedents in allAntecedents) {
         final consequents = supports.keys.singleWhere(
-          (itemset) =>
+          (final itemset) =>
               itemset.length == finalItemset.length - antecedents.length &&
               finalItemset.every(itemset.union(antecedents).contains),
         );
@@ -129,7 +130,7 @@ class Apriori {
 
   double _getSupport(final Set<String> itemset) {
     final transactionsContainingItemset = transactions
-        .where((transaction) => itemset.every(transaction.contains))
+        .where((final transaction) => itemset.every(transaction.contains))
         .toList();
 
     return transactionsContainingItemset.length / transactions.length;

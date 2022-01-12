@@ -20,7 +20,7 @@ void main(final List<String> arguments) {
   ).readAsStringSync();
 
   final transactions = (jsonDecode(transactionsRaw) as List)
-      .map((transaction) => (transaction as List).cast<String>())
+      .map((final transaction) => (transaction as List).cast<String>())
       .toList()
       .cast<List<String>>();
 
@@ -36,13 +36,15 @@ void main(final List<String> arguments) {
     final currentRule = <String, dynamic>{};
 
     rule.forEach(
-      (key, value) => currentRule[key] = value is Set ? value.toList() : value,
+      (final key, final value) =>
+          currentRule[key] = value is Set ? value.toList() : value,
     );
 
     rules.add(currentRule);
   }
 
-  rules.sort((a, b) => (b['lift'] as double).compareTo((a['lift'] as double)));
+  rules.sort((final a, final b) =>
+      (b['lift'] as double).compareTo((a['lift'] as double)));
 
   File('${arguments[0]}/../${options.rulesPath}').writeAsStringSync(
     decoder.convert(rules),
