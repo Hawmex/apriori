@@ -76,7 +76,10 @@ class Apriori {
           antecedents: antecedents,
         );
 
-        final lift = _getLift(confidence: confidence, consequents: consequents);
+        final lift = _getLift(
+          confidence: confidence,
+          consequents: consequents,
+        );
 
         if (confidence >= minConfidence && lift > 1) {
           rules.add({
@@ -96,8 +99,8 @@ class Apriori {
   }
 
   Set<Set<String>> _getItemsets({
-    required Set<String> items,
-    required int length,
+    required final Set<String> items,
+    required final int length,
   }) {
     if (items.length == length) {
       return {items};
@@ -124,7 +127,7 @@ class Apriori {
     }
   }
 
-  double _getSupport(Set<String> itemset) {
+  double _getSupport(final Set<String> itemset) {
     final transactionsContainingItemset = transactions
         .where((transaction) => itemset.every(transaction.contains))
         .toList();
@@ -133,14 +136,14 @@ class Apriori {
   }
 
   double _getConfidence({
-    required Set<String> finalItemset,
-    required Set<String> antecedents,
+    required final Set<String> finalItemset,
+    required final Set<String> antecedents,
   }) =>
       supports[finalItemset]! / supports[antecedents]!;
 
   double _getLift({
-    required double confidence,
-    required Set<String> consequents,
+    required final double confidence,
+    required final Set<String> consequents,
   }) =>
       confidence / supports[consequents]!;
 }
