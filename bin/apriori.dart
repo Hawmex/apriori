@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:apriori/apriori.dart';
-import 'package:apriori/src/options.dart';
 
 void main(final List<String> arguments) {
   const decoder = JsonEncoder.withIndent('  ');
