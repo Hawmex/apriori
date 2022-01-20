@@ -1,6 +1,5 @@
 name: apriori
 description: Apriori association rules ML written in dart.
-version: 1.0.0
 publish_to: none
 environment:
   sdk: ">=2.14.4 <3.0.0"
