@@ -1,0 +1,506 @@
+[
+  {
+    "antecedents": [
+      "tropical fruit",
+      "root vegetables"
+    ],
+    "consequents": [
+      "whole milk",
+      "other vegetables"
+    ],
+    "confidence": 0.3333333333333333,
+    "lift": 4.453804347826086
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "other vegetables"
+    ],
+    "consequents": [
+      "tropical fruit",
+      "root vegetables"
+    ],
+    "confidence": 0.09374999999999999,
+    "lift": 4.453804347826086
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "other vegetables"
+    ],
+    "consequents": [
+      "tropical fruit",
+      "whole milk"
+    ],
+    "confidence": 0.1756440281030445,
+    "lift": 4.152123491262836
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "whole milk"
+    ],
+    "consequents": [
+      "yogurt",
+      "other vegetables"
+    ],
+    "confidence": 0.18028846153846154,
+    "lift": 4.152123491262835
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "root vegetables"
+    ],
+    "consequents": [
+      "whole milk",
+      "other vegetables"
+    ],
+    "confidence": 0.3031496062992126,
+    "lift": 4.050507103731599
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "other vegetables"
+    ],
+    "consequents": [
+      "yogurt",
+      "root vegetables"
+    ],
+    "confidence": 0.1046195652173913,
+    "lift": 4.050507103731599
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "other vegetables"
+    ],
+    "consequents": [
+      "whole milk",
+      "root vegetables"
+    ],
+    "confidence": 0.19546742209631726,
+    "lift": 3.996313157786245
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "root vegetables"
+    ],
+    "consequents": [
+      "tropical fruit",
+      "other vegetables"
+    ],
+    "confidence": 0.14345114345114343,
+    "lift": 3.9963131577862447
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "other vegetables"
+    ],
+    "consequents": [
+      "yogurt",
+      "whole milk"
+    ],
+    "confidence": 0.21246458923512745,
+    "lift": 3.7919723603234905
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "whole milk"
+    ],
+    "consequents": [
+      "tropical fruit",
+      "other vegetables"
+    ],
+    "confidence": 0.13611615245009073,
+    "lift": 3.7919723603234905
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "whole milk",
+      "other vegetables"
+    ],
+    "consequents": [
+      "root vegetables"
+    ],
+    "confidence": 0.41071428571428564,
+    "lift": 3.767690565031982
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "other vegetables"
+    ],
+    "consequents": [
+      "whole milk",
+      "root vegetables"
+    ],
+    "confidence": 0.18032786885245902,
+    "lift": 3.6867864080978836
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "root vegetables"
+    ],
+    "consequents": [
+      "yogurt",
+      "other vegetables"
+    ],
+    "confidence": 0.1600831600831601,
+    "lift": 3.6867864080978836
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "whole milk"
+    ],
+    "consequents": [
+      "other vegetables",
+      "root vegetables"
+    ],
+    "confidence": 0.1658653846153846,
+    "lift": 3.500257923407065
+  },
+  {
+    "antecedents": [
+      "other vegetables",
+      "root vegetables"
+    ],
+    "consequents": [
+      "tropical fruit",
+      "whole milk"
+    ],
+    "confidence": 0.148068669527897,
+    "lift": 3.500257923407065
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "other vegetables"
+    ],
+    "consequents": [
+      "tropical fruit",
+      "yogurt"
+    ],
+    "confidence": 0.10190217391304347,
+    "lift": 3.4795346467391304
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "yogurt"
+    ],
+    "consequents": [
+      "whole milk",
+      "other vegetables"
+    ],
+    "confidence": 0.26041666666666663,
+    "lift": 3.47953464673913
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "other vegetables"
+    ],
+    "consequents": [
+      "rolls/buns",
+      "root vegetables"
+    ],
+    "confidence": 0.08288043478260869,
+    "lift": 3.4102351282517738
+  },
+  {
+    "antecedents": [
+      "rolls/buns",
+      "root vegetables"
+    ],
+    "consequents": [
+      "whole milk",
+      "other vegetables"
+    ],
+    "confidence": 0.25523012552301255,
+    "lift": 3.4102351282517733
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "whole milk",
+      "other vegetables"
+    ],
+    "consequents": [
+      "tropical fruit"
+    ],
+    "confidence": 0.34246575342465757,
+    "lift": 3.2633800573431033
+  },
+  {
+    "antecedents": [
+      "tropical fruit"
+    ],
+    "consequents": [
+      "yogurt",
+      "whole milk",
+      "other vegetables"
+    ],
+    "confidence": 0.07267441860465117,
+    "lift": 3.2633800573431033
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "whole milk",
+      "other vegetables"
+    ],
+    "consequents": [
+      "root vegetables"
+    ],
+    "confidence": 0.35159817351598177,
+    "lift": 3.2253884686158254
+  },
+  {
+    "antecedents": [
+      "root vegetables"
+    ],
+    "consequents": [
+      "yogurt",
+      "whole milk",
+      "other vegetables"
+    ],
+    "confidence": 0.07182835820895522,
+    "lift": 3.225388468615825
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "whole milk",
+      "other vegetables"
+    ],
+    "consequents": [
+      "yogurt"
+    ],
+    "confidence": 0.4464285714285714,
+    "lift": 3.1998386089129527
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "other vegetables",
+      "rolls/buns"
+    ],
+    "consequents": [
+      "root vegetables"
+    ],
+    "confidence": 0.34659090909090906,
+    "lift": 3.1794542910447756
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "whole milk",
+      "root vegetables"
+    ],
+    "consequents": [
+      "other vegetables"
+    ],
+    "confidence": 0.5847457627118644,
+    "lift": 3.021749779563045
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "root vegetables"
+    ],
+    "consequents": [
+      "other vegetables",
+      "rolls/buns"
+    ],
+    "confidence": 0.12681912681912683,
+    "lift": 2.976466093411201
+  },
+  {
+    "antecedents": [
+      "other vegetables",
+      "rolls/buns"
+    ],
+    "consequents": [
+      "whole milk",
+      "root vegetables"
+    ],
+    "confidence": 0.14558472553699284,
+    "lift": 2.976466093411201
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "whole milk"
+    ],
+    "consequents": [
+      "other vegetables",
+      "root vegetables"
+    ],
+    "confidence": 0.1397459165154265,
+    "lift": 2.949058675992928
+  },
+  {
+    "antecedents": [
+      "other vegetables",
+      "root vegetables"
+    ],
+    "consequents": [
+      "yogurt",
+      "whole milk"
+    ],
+    "confidence": 0.16523605150214593,
+    "lift": 2.9490586759929274
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "other vegetables",
+      "root vegetables"
+    ],
+    "consequents": [
+      "tropical fruit"
+    ],
+    "confidence": 0.3026315789473684,
+    "lift": 2.883797429620563
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "whole milk",
+      "root vegetables"
+    ],
+    "consequents": [
+      "other vegetables"
+    ],
+    "confidence": 0.5384615384615385,
+    "lift": 2.7825700311249446
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "yogurt",
+      "whole milk"
+    ],
+    "consequents": [
+      "other vegetables"
+    ],
+    "confidence": 0.5033557046979865,
+    "lift": 2.6011560693641615
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "rolls/buns",
+      "root vegetables"
+    ],
+    "consequents": [
+      "other vegetables"
+    ],
+    "confidence": 0.488,
+    "lift": 2.5218034682080925
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "yogurt",
+      "other vegetables"
+    ],
+    "consequents": [
+      "whole milk"
+    ],
+    "confidence": 0.6198347107438016,
+    "lift": 2.4255688601092498
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "other vegetables",
+      "root vegetables"
+    ],
+    "consequents": [
+      "yogurt"
+    ],
+    "confidence": 0.33771929824561403,
+    "lift": 2.4206498388829214
+  },
+  {
+    "antecedents": [
+      "yogurt",
+      "other vegetables",
+      "root vegetables"
+    ],
+    "consequents": [
+      "whole milk"
+    ],
+    "confidence": 0.6062992125984252,
+    "lift": 2.3726010571798306
+  },
+  {
+    "antecedents": [
+      "other vegetables",
+      "root vegetables"
+    ],
+    "consequents": [
+      "whole milk",
+      "rolls/buns"
+    ],
+    "confidence": 0.13090128755364808,
+    "lift": 2.311101008622218
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "rolls/buns"
+    ],
+    "consequents": [
+      "other vegetables",
+      "root vegetables"
+    ],
+    "confidence": 0.10951526032315978,
+    "lift": 2.3111010086222175
+  },
+  {
+    "antecedents": [
+      "tropical fruit",
+      "other vegetables",
+      "root vegetables"
+    ],
+    "consequents": [
+      "whole milk"
+    ],
+    "confidence": 0.5702479338842975,
+    "lift": 2.23152335130051
+  },
+  {
+    "antecedents": [
+      "other vegetables",
+      "rolls/buns",
+      "root vegetables"
+    ],
+    "consequents": [
+      "whole milk"
+    ],
+    "confidence": 0.5083333333333333,
+    "lift": 1.9892359729407083
+  },
+  {
+    "antecedents": [
+      "whole milk",
+      "other vegetables",
+      "root vegetables"
+    ],
+    "consequents": [
+      "rolls/buns"
+    ],
+    "confidence": 0.2675438596491228,
+    "lift": 1.4544092403479678
+  }
+]

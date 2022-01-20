@@ -1,0 +1,6 @@
+{
+  "transactionsPath": "transactions.json",
+  "rulesPath": "rules.json",
+  "minSupport": 0.006,
+  "minConfidence": 0.07
+}
