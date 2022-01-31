@@ -14,10 +14,12 @@ class Options {
     this.maxAntecedentsLength,
   });
 
-  Options.fromJson(final Map<String, dynamic> data)
-      : transactionsPath = data['transactionsPath'],
-        rulesPath = data['rulesPath'],
-        minSupport = data['minSupport'],
-        minConfidence = data['minConfidence'],
-        maxAntecedentsLength = data['maxAntecedentsLength'];
+  factory Options.fromJson(final Map<String, dynamic> json) {
+    return Options(
+      transactionsPath: json['transactionsPath'],
+      rulesPath: json['rulesPath'],
+      minSupport: json['minSupport'],
+      minConfidence: json['minConfidence'],
+    );
+  }
 }
