@@ -1,1 +1,1 @@
-Apriori association rules ML written in dart.
+Apriori association rules ML.
