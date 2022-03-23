@@ -42,8 +42,10 @@ void main(final List<String> arguments) {
     rules.add(currentRule);
   }
 
-  rules.sort((final a, final b) =>
-      (b['lift'] as double).compareTo((a['lift'] as double)));
+  rules.sort(
+    (final a, final b) =>
+        (b['lift'] as double).compareTo((a['lift'] as double)),
+  );
 
   File('${arguments[0]}/../${options.rulesPath}').writeAsStringSync(
     decoder.convert(rules),
