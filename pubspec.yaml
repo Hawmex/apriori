@@ -4,4 +4,4 @@ publish_to: none
 environment:
   sdk: ">=2.17.0 <3.0.0"
 dev_dependencies:
-  dawn_lints: ^1.0.0
+  dawn_lints: ^2.0.0
