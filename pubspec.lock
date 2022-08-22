@@ -7,7 +7,7 @@ packages:
       name: dawn_lints
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   lints:
     dependency: transitive
     description:
@@ -16,4 +16,4 @@ packages:
     source: hosted
     version: "2.0.0"
 sdks:
-  dart: ">=2.17.0 <3.0.0"
+  dart: ">=2.17.5 <3.0.0"

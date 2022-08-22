@@ -7,9 +7,10 @@ class Apriori {
   final double minSupport;
   final double minConfidence;
   final int? maxAntecedentsLength;
-  final bool log;
 
-  final Set<String> items;
+  late final items =
+      transactions.expand((final transaction) => transaction).toSet();
+
   final Map<Set<String>, double> supports = {};
   final Set<Map<String, dynamic>> rules = {};
 
@@ -18,9 +19,8 @@ class Apriori {
     required this.minSupport,
     required this.minConfidence,
     this.maxAntecedentsLength,
-    this.log = false,
-  }) : items = transactions.expand((final transaction) => transaction).toSet() {
-    if (log) print('Extracted ${items.length} items.');
+  }) {
+    print('Extracted ${items.length} items.');
 
     int maxLength = 1;
 
@@ -53,7 +53,7 @@ class Apriori {
         .where((final itemset) => itemset.length == maxLength)
         .toSet();
 
-    if (log) print('Calculated ${finalItemsets.length} common itemsets.');
+    print('Calculated ${finalItemsets.length} common itemsets.');
 
     for (final finalItemset in finalItemsets) {
       final allAntecedents = supports.keys
@@ -93,10 +93,8 @@ class Apriori {
       }
     }
 
-    if (log) {
-      print('Generated ${rules.length} association rules.');
-      print('Done in ${(Timeline.now / 1000).round() - _startTime}ms!');
-    }
+    print('Generated ${rules.length} association rules.');
+    print('Done in ${(Timeline.now / 1000).round() - _startTime}ms!');
   }
 
   Set<Set<String>> _getItemsets({
