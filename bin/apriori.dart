@@ -6,8 +6,9 @@ import 'package:apriori/apriori.dart';
 void main(final List<String> arguments) {
   const decoder = JsonEncoder.withIndent('  ');
 
-  final options =
-      Options.fromJson(jsonDecode(File(arguments[0]).readAsStringSync()));
+  final options = Options.fromJson(
+    jsonDecode(File(arguments[0]).readAsStringSync()) as Map<String, dynamic>,
+  );
 
   final rules = <Map<String, dynamic>>[];
 

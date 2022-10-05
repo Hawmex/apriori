@@ -15,9 +15,9 @@ class Options {
   });
 
   Options.fromJson(final Map<String, dynamic> json)
-      : transactionsPath = json['transactionsPath'],
-        rulesPath = json['rulesPath'],
-        minSupport = json['minSupport'],
-        minConfidence = json['minConfidence'],
-        maxAntecedentsLength = json['maxAntecedentsLength'];
+      : transactionsPath = json['transactionsPath'] as String,
+        rulesPath = json['rulesPath'] as String,
+        minSupport = json['minSupport'] as double,
+        minConfidence = json['minConfidence'] as double,
+        maxAntecedentsLength = json['maxAntecedentsLength'] as int;
 }
