@@ -19,5 +19,5 @@ class Options {
         rulesPath = json['rulesPath'] as String,
         minSupport = json['minSupport'] as double,
         minConfidence = json['minConfidence'] as double,
-        maxAntecedentsLength = json['maxAntecedentsLength'] as int;
+        maxAntecedentsLength = json['maxAntecedentsLength'] as int?;
 }
