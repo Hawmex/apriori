@@ -1,1 +1,1 @@
-Apriori association rules ML.
+Apriori association rules Miner.
