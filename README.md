@@ -1,1 +1,1 @@
-Apriori association rules Miner.
+Association Rules Learning with Apriori.
