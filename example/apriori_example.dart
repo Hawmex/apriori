@@ -1,3 +1,3 @@
 import '../bin/apriori.dart' as app;
 
-void main() => app.main(['example/options.json']);
+void main() => app.main(['./example/options.json']);

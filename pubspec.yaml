@@ -1,9 +1,10 @@
 name: apriori
-description: Apriori association rules ML.
+description: >
+  Association Rules Learning with Apriori.
 publish_to: none
 executables:
   apriori:
 environment:
-  sdk: ">=2.19.4 <3.0.0"
+  sdk: ^3.1.0
 dev_dependencies:
-  dawn_lints: ^3.1.0
+  lints: ^2.1.1

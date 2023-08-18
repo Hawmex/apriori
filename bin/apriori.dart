@@ -6,22 +6,24 @@ import 'package:apriori/apriori.dart';
 void main(final List<String> arguments) {
   const decoder = JsonEncoder.withIndent('  ');
 
-  final options = Options.fromJson(
-    jsonDecode(File(arguments[0]).readAsStringSync()) as Map<String, dynamic>,
-  );
-
   final rules = <Map<String, dynamic>>[];
 
-  final transactionsRaw =
-      File('${arguments[0]}/../${options.transactionsPath}').readAsStringSync();
+  final optionsFilePath = arguments.single;
+  final optionsFile = File(optionsFilePath);
+  final rawOptions = optionsFile.readAsStringSync();
+  final options = Options.fromJson(jsonDecode(rawOptions));
 
-  final transactions = (jsonDecode(transactionsRaw) as List)
-      .map((final transaction) => (transaction as List).cast<String>())
-      .toList()
-      .cast<List<String>>();
+  final transactionsFilePath =
+      '${optionsFile.parent.path}/${options.transactionsPath}';
+
+  final transactionsFile = File(transactionsFilePath);
+  final rawTransactions = transactionsFile.readAsStringSync();
+  final transactions = jsonDecode(rawTransactions);
 
   final apriori = Apriori(
-    transactions: transactions,
+    transactions: (transactions as List)
+        .map((final transaction) => (transaction as List).cast<String>())
+        .toList(),
     minSupport: options.minSupport,
     minConfidence: options.minConfidence,
     maxAntecedentsLength: options.maxAntecedentsLength,
@@ -37,10 +39,13 @@ void main(final List<String> arguments) {
     rules.add(currentRule);
   }
 
-  rules.sort((final a, final b) {
-    return (b['lift'] as double).compareTo((a['lift'] as double));
-  });
+  rules.sort(
+    (final a, final b) =>
+        (b['lift'] as double).compareTo((a['lift'] as double)),
+  );
 
-  File('${arguments[0]}/../${options.rulesPath}')
-      .writeAsStringSync(decoder.convert(rules));
+  final outputFilePath = '${arguments[0]}/../${options.rulesPath}';
+  final outputFile = File(outputFilePath);
+
+  outputFile.writeAsStringSync(decoder.convert(rules));
 }
