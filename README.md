@@ -86,5 +86,5 @@ You can find look at [`example/`](./example/) for more information.
 
 ## Performance
 
-This application can extract the association rules in [`example/`] in ~55
-seconds
+This application can extract the association rules in [`example/`](./example/)
+in ~55 seconds
