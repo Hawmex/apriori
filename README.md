@@ -1,7 +1,7 @@
 # Association Rules Learning with Apriori
 
-This is a command-line application written in Dart that can be used to uncover
-association rules in transactions.
+This repository contains a command-line application written in Dart that
+uncovers association rules within transactions.
 
 ## Getting Started
 
@@ -20,19 +20,15 @@ dart pub global activate apriori -s=path
 You need to prepare two files:
 
 - A JSON file containing your transactions.
-- A JSON containing your settings and preferences.
+- A JSON file containing your settings and preferences.
 
 #### Transactions Scheme
-
-Using TypeScript types:
 
 ```ts
 type Transactions = string[][];
 ```
 
 #### Options Scheme
-
-Using TypeScript types:
 
 ```ts
 type Options = {
@@ -46,7 +42,7 @@ type Options = {
 
 ### Run the Application
 
-Then you can run the application through the command line:
+Then, you can run the application through the command line:
 
 ```
 apriori options.json
@@ -61,7 +57,6 @@ apriori options.json
   ["tropical fruit", "yogurt", "coffee"],
   ["whole milk"],
   ["pip fruit", "yogurt", "cream cheese", "meat spreads"]
-  //...
 ]
 ```
 
@@ -82,9 +77,9 @@ apriori options.json
 apriori options.json
 ```
 
-You can find look at [`example/`](./example/) for more information.
+You can look at [`example/`](./example/) for more information.
 
 ## Performance
 
 This application can extract the association rules in [`example/`](./example/)
-in ~55 seconds
+in ~55 seconds.
