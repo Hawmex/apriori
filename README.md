@@ -1,4 +1,4 @@
-# Association Rules Learning with Apriori
+# Association Rule Learning with Apriori
 
 This repository contains a command-line application written in Dart that
 uncovers the association rules within a list of transactions.
