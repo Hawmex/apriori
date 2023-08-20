@@ -19,8 +19,8 @@ dart pub global activate apriori -s=path
 
 You need to prepare two files:
 
-- A JSON file containing your transactions.
-- A JSON file containing your settings and preferences.
+- A JSON file containing your transactions
+- A JSON file containing your settings and preferences
 
 #### Transactions Scheme
 
