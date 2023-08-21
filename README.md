@@ -42,7 +42,7 @@ type Options = {
 
 ### Run the Application
 
-Then, you can run the application:
+You can run the application by running the following command:
 
 ```
 apriori options.json
@@ -81,5 +81,5 @@ You can look at [`example/`](./example/) for more information.
 
 ## Performance
 
-This application can extract learn the association rules within the transactions
-at [`example/`](./example/) in ~55 seconds.
+This application can extract and learn the association rules within the
+transactions at [`example/`](./example/) in ~55 seconds.
