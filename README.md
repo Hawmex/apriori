@@ -42,7 +42,7 @@ type Options = {
 
 ### Run the Application
 
-You can run the application by running the following command:
+You can run the application using the following command:
 
 ```
 apriori options.json
